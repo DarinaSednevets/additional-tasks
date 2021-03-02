@@ -1,4 +1,4 @@
-const users =[
+const users = [
   {
     name: 'Moore Hensley',
     email: 'moorehensley@indexia.com',
@@ -73,10 +73,63 @@ const users =[
 
 
 
-const getFriends = (users) => {
-    let
-   
-};
-               
 
-console.log(getFriends(users));
+
+
+// const uniqueFriendsOfUsers = users
+//   .flatMap(user => user.friends)
+//   .filter((friend, index, arr) => {
+//     return arr.indexOf(friend) === index;
+//   });
+
+// console.log(uniqueFriendsOfUsers);
+
+
+
+// const getFriends = (users) => {
+
+//   return users.flatMap(user => user.friends)
+// };
+// const ourArr = (newArr) => getFriends.filter((friend, index, arr) => {
+//   return arr.indexOf(friend) === index;
+// });
+
+
+
+// const allFriends = users.flatMap(item => item.friends);
+
+// console.log(allFriends);
+// const uniqueFriends = allFriends.filter((item, index, arr) => {
+//   return arr.indexOf(item) === index;
+// });
+
+// const itemsWithoutDoubles = allFriends.filter((item, _index, arr) => {
+//   return arr.indexOf(item) === arr.lastIndexOf(item);
+// });
+
+// console.log(uniqueFriends);
+// console.log(itemsWithoutDoubles);
+
+const getFriends = (users) => {
+  const allFriends = users.flatMap(item => item.friends);
+
+
+  const uniqueFriends = allFriends.filter((item, index, arr) => {
+    return arr.indexOf(item) === index;
+  });
+};
+console.log(getFriends);
+
+
+
+
+
+// решение, которое прошло автопроверку >
+
+
+const getFriends = (users) => users
+  .flatMap(item => item.friends)
+  .filter((item, index, arr) => {
+    return arr.indexOf(item) === index;
+  });
+
