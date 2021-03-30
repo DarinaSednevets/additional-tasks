@@ -1,14 +1,3 @@
-// // Пиши код ниже этой строки
-// const getTotalFriendCount = users => {
-//     return users.reduce((total, user) => total + user.friends.length, 0);
-// };
-// // Пиши код выше этой строки
-// console.log(getTotalFriendCount);
-
-
-// // const calculateTotalBalance = users => {
-// //     return users.reduce((total, user) => total + user.balance, 0)
-// // };
 const users = [
     {
         name: 'Moore Hensley',
@@ -50,7 +39,7 @@ const users = [
         name: 'Carey Barr',
         email: 'careybarr@nurali.com',
         eyeColor: 'blue',
-        friends: ['Jordan Sampson', 'Eddie Strong'],
+        friends: ['Jordan Sampson', 'Eddie Strong', 'Adrian Cross'],
         isActive: true,
         balance: 3951,
         gender: 'male'
@@ -59,7 +48,7 @@ const users = [
         name: 'Blackburn Dotson',
         email: 'blackburndotson@furnigeer.com',
         eyeColor: 'brown',
-        friends: ['Jacklyn Lucas', 'Linda Chapman'],
+        friends: ['Jacklyn Lucas', 'Linda Chapman', 'Adrian Cross', 'Solomon Fokes'],
         isActive: false,
         balance: 1498,
         gender: 'male'
@@ -75,13 +64,18 @@ const users = [
     }
 ]
 
+const getSortedFriends = users => {
+    return [...new Set(users.flatMap(user => user.friends).sort())]
+
+}
+console.log(getSortedFriends(users));
 
 
-const getTotalFriendCount = users => {
-    return users.reduce((allFriends, user) => {
-        allFriends.push(...user.friends);
-        return allFriends;
-    }, []).length;
+прошло решение, которое ниже, хотя предыдущее тоже работает
 
-};
-console.log(getTotalFriendCount(users));
+const getSortedFriends = users => {
+    return users.flatMap(user => user.friends)
+        .sort()
+        .filter((item, index, arr) => arr.indexOf(item) === index);
+}
+console.log(getSortedFriends(users));
